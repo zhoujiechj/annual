@@ -71,7 +71,7 @@ exec_wait() {
 }
 
 exec_status() {
-    echo "[$(date '+%H:%M:%S')] 📊 当前状态: 操作 $CURRENT_IDX / $TOTAL_OPS"
+    echo "[$(date '+%H:%M:%S')] 📊 当前状态: 操作  $((CURRENT_IDX + 1)) / $TOTAL_OPS"
 }
 
 # ---------- 解析函数（无改动） ----------
@@ -180,7 +180,7 @@ execute_operation() {
 }
 
 step_forward() {
-    ((CURRENT_IDX < TOTAL_OPS)) && ((CURRENT_IDX++))
+    ((CURRENT_IDX < TOTAL_OPS - 1)) && ((CURRENT_IDX++))
     echo "$CURRENT_IDX" > "$STATE_FILE"
     exec_status
 }
